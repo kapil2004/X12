@@ -1,11 +1,11 @@
 # -*- encoding: utf-8 -*-
 $:.push File.expand_path("../lib", __FILE__)
-require "X12/version"
+# require "X12/version"
 require "rake"
 
 Gem::Specification.new do |s|
   s.name        = "X12"
-  s.version     = X12::VERSION
+  s.version     = 0.1
   s.platform    = Gem::Platform::RUBY
   s.authors     = ["Kapil Gupta"]
   s.email       = ["kgupta@teladoc.com"]
