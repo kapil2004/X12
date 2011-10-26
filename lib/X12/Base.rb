@@ -66,8 +66,10 @@ module X12
         end
         i.nodes.each{|j|
           case 
-          when j.kind_of?(X12::Base)  : j.show(ind+'  ')
-          when j.kind_of?(X12::Field) : puts "#{ind+'  '}#{j.name} -> '#{j.to_s}'"
+          when j.kind_of?(X12::Base)
+            j.show(ind+'  ')
+          when j.kind_of?(X12::Field)
+            puts "#{ind+'  '}#{j.name} -> '#{j.to_s}'"
           end
         } 
         count += 1
@@ -112,7 +114,7 @@ module X12
     def find(e)
       #puts "Finding [#{e}] in #{self.class} #{name}"
       case self
-        when X12::Loop
+      when X12::Loop
         # Breadth first
         res = nodes.find{|i| e==i.name }
         return res if res
@@ -121,7 +123,7 @@ module X12
           res = i.find(e) if i.kind_of?(X12::Loop)
           return res unless res.nil? or EMPTY==res # otherwise keep looping
         }
-        when X12::Segment
+      when X12::Segment
         return find_field(e).to_s
       end # case
       return EMPTY
